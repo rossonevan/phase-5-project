@@ -23,7 +23,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('/test')
+    fetch('/all-games')
       .then(res => {
         if(res.ok){
           res.json().then(setGameData)
@@ -44,7 +44,7 @@ function App() {
         <Route exact path='/'>
           <Home games={gameData} selectGame={selectGame} />
         </Route>
-        <Route path='games/id'>
+        <Route path='/game'>
           <GameDetail selectedGame={selectedGame} />
         </Route>
         <Route path='/signup'>
