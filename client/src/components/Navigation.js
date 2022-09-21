@@ -1,15 +1,31 @@
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useHistory} from 'react-router-dom';
 
 
 
-function Navigation() {
 
+function Navigation({currentUser, updateUser}) {
 
+    const history = useHistory()
+   
+    const handleLogout = () => {
+        fetch('/logout', {method: 'DELETE'})
+        updateUser('')
+        history.push('/login')
+    }
     return (
         <div>
             <Link exact to='/'>Worth-to-Play?</Link>
-            <NavLink exact to='/signup'>Signup</NavLink>
-            <NavLink exact to='/login'>Login</NavLink>
+            {currentUser ?
+                <div>
+                    <h3>Welcome, {currentUser.username}</h3>
+                    <button onClick={handleLogout}>Log Out</button>
+                </div> :
+
+                <div>
+                    <NavLink exact to='/signup'>Signup</NavLink>
+                    <NavLink exact to='/login'>Login</NavLink>
+                </div>
+            }
         </div>
     )
 }

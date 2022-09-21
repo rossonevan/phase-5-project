@@ -14,7 +14,7 @@ function GameCard({game, selectGame}) {
             <h3>Genre: {game.genre}</h3>
             <h4>Release Date: {game.release_date}</h4>
             
-            <h4>Description: {game.description}</h4>
+            <h4>Description: {game.short_description}</h4>
 
         </div>
     )

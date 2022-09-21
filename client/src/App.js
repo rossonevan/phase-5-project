@@ -10,6 +10,12 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
+  // State of currently logged in user
+  const [currentUser, setCurrentUser] = useState('');
+
+  const updateUser = (user) => setCurrentUser(user)
+
+
   // GET all games from API
   const [gameData, setGameData] = useState([])
   const [errors, setErrors] = useState(false)
@@ -38,20 +44,20 @@ function App() {
   return (
     <div>
       <header >
-        <Navigation />
+        <Navigation currentUser={currentUser} updateUser={updateUser}/>
       </header>
       <Switch>
         <Route exact path='/'>
           <Home games={gameData} selectGame={selectGame} />
         </Route>
         <Route path='/game'>
-          <GameDetail selectedGame={selectedGame} />
+          <GameDetail selectedGame={selectedGame} currentUser={currentUser}/>
         </Route>
         <Route path='/signup'>
-          <Signup />
+          <Signup updateUser={updateUser} />
         </Route>
         <Route path='/login'>
-          <Login />
+          <Login updateUser={updateUser} />
         </Route>
       </Switch>
     </div>
