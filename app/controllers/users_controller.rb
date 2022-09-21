@@ -40,9 +40,9 @@ class UsersController < ApplicationController
         User.find(params[:id])
     end
 
-    # def user_params
-    #     params.permit(:username, :email, :password)
-    # end
+    def user_params
+        params.permit(:username, :email, :password)
+    end
 
 
 end
