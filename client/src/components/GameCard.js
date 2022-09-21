@@ -5,11 +5,11 @@ function GameCard({game, selectGame}) {
 
 
     return (
-        <div>
-            <h1>{game.title}</h1>
+        <div className=" flex-wrap p-6 bg-white sm:p-4 sm:m-10 rounded-xl w-3/12">
+            <h1 className="text-center font-bold">{game.title}</h1>
+            <img src={game.thumbnail} alt={game.title} onClick={() => selectGame(game)} />
             <p>Publisher: {game.publisher}</p>
             <p>Developer: {game.developer}</p>
-            <img src={game.thumbnail} alt={game.title} onClick={() => selectGame(game)} />
             <h3>Platform: {game.platform}</h3> 
             <h3>Genre: {game.genre}</h3>
             <h4>Release Date: {game.release_date}</h4>

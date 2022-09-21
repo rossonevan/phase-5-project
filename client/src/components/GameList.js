@@ -3,7 +3,7 @@ import GameCard from "./GameCard"
 
 function GameList({games, selectGame}) {
 
-    const gamesLimit = games.slice(0,10)
+    const gamesLimit = games.slice(0,51)
 
     const gameComponents = gamesLimit.map(game => {
         return <GameCard
@@ -15,7 +15,7 @@ function GameList({games, selectGame}) {
 
 
     return (
-        <div>
+        <div className="block p-4 rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
             {gameComponents}
         </div>
     )

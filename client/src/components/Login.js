@@ -45,37 +45,35 @@ function Login({updateUser}) {
         setFormData({...formData, [name]: value})
     }
     return (
-        <section>
-            <div>
-                <div>
-                    <form onSubmit={onSubmit}>
-                        <p>Sign into your account</p>
+        <section className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+            <div className="max-w-lg mx-auto">
+                <form onSubmit={onSubmit} className="p-8 mt-6 mb-0 rounded-lg shadow-2xl space-y-4 bg-black">
+                    <p className="text-lg font-medium text-center text-white">Please sign into your account.</p>
 
-                        <div>
-                            <label htmlFor="username">Username</label>
-                            <div>
-                                <input type='text' name='username' placeholder='Enter Username' required onChange={handleChange} />
-                            </div>
+                    <div>
+                        <label htmlFor="username" className="text-sm font-medium text-white">Username</label>
+                        <div className="relative mt-1">
+                            <input type='text' name='username' placeholder='Enter Username' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm" />
                         </div>
+                    </div>
 
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <div>
-                                <input type='text' name='email' placeholder='Enter Email' required onChange={handleChange} />
-                            </div>
+                    <div>
+                        <label htmlFor="email" className="text-sm font-medium text-white">Email</label>
+                        <div className="relative mt-1">
+                            <input type='text' name='email' placeholder='Enter Email' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm"/>
                         </div>
+                    </div>
 
-                        <div>
-                            <label htmlFor="password">Password</label>
-                            <div>
-                                <input type='password' name='password' placeholder='Enter Password' required onChange={handleChange} />
-                            </div>
+                    <div>
+                        <label htmlFor="password" className="text-sm font-medium text-white">Password</label>
+                        <div className="relative mt-1">
+                            <input type='password' name='password' placeholder='Enter Password' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm"/>
                         </div>
+                    </div>
 
-                        <button type="submit">Login</button>
-                    </form>
-                    {error ? <div class="text-white">{error}</div>:null}
-                </div>
+                    <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white bg-red-600 hover:bg-red-400 rounded-lg">Login</button>
+                </form>
+                {error ? <div className="text-white">{error}</div>:null}
             </div>
         </section>
     )

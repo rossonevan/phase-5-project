@@ -42,8 +42,9 @@ function App() {
   console.log(selectedGame)
 
   return (
-    <div>
-      <header >
+    <div className="bg-gradient-to-b from-red-500 to-black bg-scroll bg-contain 
+    overflow-auto m-auto h-screen w-screen">
+      <header className='bg-black'>
         <Navigation currentUser={currentUser} updateUser={updateUser}/>
       </header>
       <Switch>
