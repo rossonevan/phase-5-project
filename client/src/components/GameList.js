@@ -15,7 +15,7 @@ function GameList({games, selectGame}) {
 
 
     return (
-        <div className="block p-4 rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
+        <div className=" p- rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
             {gameComponents}
         </div>
     )

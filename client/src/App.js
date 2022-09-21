@@ -29,7 +29,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('/all-games')
+    fetch('/all_games')
       .then(res => {
         if(res.ok){
           res.json().then(setGameData)
@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="bg-gradient-to-b from-red-500 to-black bg-scroll bg-contain 
     overflow-auto m-auto h-screen w-screen">
-      <header className='bg-black'>
+      <header className='bg-gradient-to-br from-black to-gray-700'>
         <Navigation currentUser={currentUser} updateUser={updateUser}/>
       </header>
       <Switch>

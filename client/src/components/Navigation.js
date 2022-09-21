@@ -25,8 +25,8 @@ function Navigation({currentUser, updateUser}) {
                             </div> :
 
                             <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
-                                <NavLink to='/signup' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-400 py-1 px-3'>Signup</NavLink>
-                                <NavLink to='/login' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-400 py-1 px-3'>Login</NavLink>
+                                <NavLink to='/signup' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Signup</NavLink>
+                                <NavLink to='/login' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Login</NavLink>
                             </div>
                         }
                     </div>

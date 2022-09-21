@@ -47,7 +47,7 @@ function Login({updateUser}) {
     return (
         <section className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
             <div className="max-w-lg mx-auto">
-                <form onSubmit={onSubmit} className="p-8 mt-6 mb-0 rounded-lg shadow-2xl space-y-4 bg-black">
+                <form onSubmit={onSubmit} className="p-8 mt-6 mb-0 rounded-lg shadow-2xl space-y-4 bg-gradient-to-br from-black to-gray-700">
                     <p className="text-lg font-medium text-center text-white">Please sign into your account.</p>
 
                     <div>
