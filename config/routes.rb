@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
   
   get "/all_games", to: 'games#from_api'
+  # get "/game/:id", to: 'games#show'
 
   post '/signup', to: 'users#create'
   get '/me', to: "users#show"

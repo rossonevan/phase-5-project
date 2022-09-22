@@ -2,12 +2,12 @@ import GameList from "./GameList"
 
 
 
-function Home({games, selectGame, currentUser}) {
+function Home({games, currentUser}) {
 
 
     return (
         <div>
-            <GameList games={games} selectGame={selectGame} currentUser={currentUser}/>
+            <GameList games={games} currentUser={currentUser}/>
         </div>
     )
 }

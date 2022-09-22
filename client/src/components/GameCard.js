@@ -1,11 +1,16 @@
 import {useState} from 'react';
-import {Link} from 'react-router-dom';
 
 
-function GameCard({game, selectGame, currentUser}) {
+
+function GameCard({game, currentUser}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
+     const [showReviews, setShowReviews] = useState(false)
+
+    const toggleReviews = () => {
+        setShowReviews(showReviews => !showReviews)
+    }
 
     const userInput = e => {
         setForm( pF => ({...pF, [e.target.name]: e.target.value}))
@@ -36,8 +41,8 @@ function GameCard({game, selectGame, currentUser}) {
             <div>
             {showForm ? 
                 <form className='text-black' onSubmit={addReview}>
-                    <input type='text-area' onChange={userInput} name='comment' />
-                    <input type='number' onChange={userInput} name='rating' />
+                    <input type='text' onChange={userInput} name='comment' placeholder='Comment'/>
+                    <input type='number' onChange={userInput} name='rating' placeholder='Rating'/>
                     <input type='submit' />
                 </form>
             :
@@ -45,25 +50,20 @@ function GameCard({game, selectGame, currentUser}) {
             </div>
         )}
 
-        const handleSelectedGame = () => {
-            selectGame(game)
-        }
-
 
     return (
 
 
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
-            <Link to='/game' onClick={handleSelectedGame} className="text-center font-bold">{game.title}</Link>
-            <img src={game.thumbnail} alt={game.title} onClick={() => setShowForm(!showForm)} />
-            <p>Publisher: {game.publisher}</p>
-            <p>Developer: {game.developer}</p>
+            <h1 className="text-center font-bold">{game.title}</h1>
+            <img src={game.thumbnail} alt={game.title} />
             <h3>Platform: {game.platform}</h3> 
             <h3>Genre: {game.genre}</h3>
-            <h4>Release Date: {game.release_date}</h4>
-            <h4>Description: {game.short_description}</h4>
+            <button onClick={toggleReviews}>Show Reviews</button>
+            {showReviews ? <div><h1>Reviews</h1></div> : null}
+            <br></br>
             {currentUser ? showReviewForm() : null}
-
+            {showForm ? (<button onClick={() => setShowForm(!showForm)}>Cancel</button>) : (<button onClick={() => setShowForm(!showForm)}>Add A Review</button>)}
         </div>
     )
 }

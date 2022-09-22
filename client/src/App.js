@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
-import GameDetail from './components/GameDetail';
+// import GameDetail from './components/GameDetail';
 import UserPage from './components/UserPage';
 import { useState, useEffect } from 'react';
 
@@ -23,11 +23,11 @@ function App() {
   const [errors, setErrors] = useState(false);
   
   // Selected Game for review
-  const [selectedGame, setSelectedGame] = useState(false)
+  // const [selectedGame, setSelectedGame] = useState(false)
 
-  const selectGame = (game) => {
-    setSelectedGame(game)
-  }
+  // const selectGame = (game) => {
+  //   setSelectedGame(game)
+  // }
 
 
   useEffect(() => {
@@ -67,10 +67,7 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <Home games={gameData} selectGame={selectGame} currentUser={currentUser}/>
-        </Route>
-        <Route path='/game'>
-          <GameDetail selectedGame={selectedGame} currentUser={currentUser}/>
+          <Home games={gameData} currentUser={currentUser}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} updateUser={updateUser}/>

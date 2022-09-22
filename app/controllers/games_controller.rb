@@ -7,6 +7,15 @@ class GamesController < ApplicationController
         render json: r.body
     end
 
-    
+    def show
+        game = find_game
+        render json: game, status: :ok
+    end
+
+    private
+
+    def find_game
+        Game.find(params[:id])
+    end
 
 end
