@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
+
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
 
@@ -42,7 +43,22 @@ function App() {
       })
     }, [])
 
+    useEffect(() => {
+      fetch(`/me`)
+        .then(res => {
+            if(res.ok){
+                res.json().then(user => {
+                    setCurrentUser(user);
+                })
+            } else {
+                res.json().then(data => setErrors(data.error))
+            }
+        })
+    }, [])
+
+
   // console.log(selectedGame)
+
 
   if(errors) return <h1>{errors}</h1>
 
