@@ -1,7 +1,7 @@
 import GameCard from "./GameCard"
 
 
-function GameList({games, selectGame}) {
+function GameList({games, selectGame, currentUser}) {
 
     const gamesLimit = games.slice(0,51)
 
@@ -9,6 +9,7 @@ function GameList({games, selectGame}) {
         return <GameCard
         game={game}
         selectGame={selectGame}
+        currentUser={currentUser}
         key={game.id}
         />
     })

@@ -12,6 +12,10 @@ class ApplicationController < ActionController::API
 
   private
 
+  def authenticate_user
+    render json: {errors: {User: 'Not Authorized'} }, status: :unauthorized unless current_user
+  end
+
   def record_not_found(not_found)
     render json: {error: "#{not_found.model} not found"}, status: :not_found
   end
@@ -20,8 +24,5 @@ class ApplicationController < ActionController::API
     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
   end
 
-  def authenticate_user
-    render json: {errors: {User: 'Not Authorized'} }, status: :unauthorized unless current_user
-  end
 
 end

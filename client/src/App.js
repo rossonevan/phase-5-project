@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
 import GameDetail from './components/GameDetail';
+import UserPage from './components/UserPage';
 import { useState, useEffect } from 'react';
 
 
@@ -15,10 +16,12 @@ function App() {
 
   const updateUser = (user) => setCurrentUser(user)
 
+  console.log(currentUser)
+
 
   // GET all games from API
-  const [gameData, setGameData] = useState([])
-  const [errors, setErrors] = useState(false)
+  const [gameData, setGameData] = useState([]);
+  const [errors, setErrors] = useState(false);
   
   // Selected Game for review
   const [selectedGame, setSelectedGame] = useState(false)
@@ -39,7 +42,9 @@ function App() {
       })
     }, [])
 
-  console.log(selectedGame)
+  // console.log(selectedGame)
+
+  if(errors) return <h1>{errors}</h1>
 
   return (
     <div className="bg-gradient-to-b from-red-500 to-black bg-scroll bg-contain 
@@ -49,10 +54,13 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <Home games={gameData} selectGame={selectGame} />
+          <Home games={gameData} selectGame={selectGame} currentUser={currentUser}/>
         </Route>
         <Route path='/game'>
           <GameDetail selectedGame={selectedGame} currentUser={currentUser}/>
+        </Route>
+        <Route path="/me">
+          <UserPage currentUser={currentUser} updateUser={updateUser}/>
         </Route>
         <Route path='/signup'>
           <Signup updateUser={updateUser} />

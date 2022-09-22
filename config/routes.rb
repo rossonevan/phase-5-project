@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
   
-  get "all_games", to: 'games#from_api'
-  get "/game/:id", to: 'games#show'
+  get "/all_games", to: 'games#from_api'
 
   post '/signup', to: 'users#create'
+  get '/me', to: "users#show"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -15,11 +15,11 @@ class ReviewsController < ApplicationController
 
     def create
         user = current_user
-        character = Character.find_or_create_by( character_params)
+        game = Game.find_or_create_by(game_params)
         
         review = Review.new(review_params)
         review.user_id = user.id
-        review.character_id = character.id
+        review.game_id = game.id
         review.save
         render json: review, status: :created
     end
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     end
 
     def game_params
-        params.permit( :title, :short_desciption, :genre, :platform, :publisher, :developer, :release_date, :thumbnail )
+        params.permit(:title, :short_description, :genre, :platform, :publisher, :developer, :release_date, :thumbnail)
     end
 
 end

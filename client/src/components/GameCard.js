@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 
-function GameCard({game, selectGame}) {
+function GameCard({game, selectGame, currentUser}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -18,6 +18,7 @@ function GameCard({game, selectGame}) {
             ...game
         }
 
+
         fetch('/reviews', {
             method: 'POST',
             headers: {
@@ -29,11 +30,26 @@ function GameCard({game, selectGame}) {
     }
 
 
+        const showReviewForm = () => {
+            return (
+            <div>
+            {showForm ? 
+                <form className='text-black' onSubmit={addReview}>
+                    <input type='text-area' onChange={userInput} name='comment' />
+                    <input type='number' onChange={userInput} name='rating' />
+                    <input type='submit' />
+                </form>
+            :
+            null}
+            </div>
+        )}
+
+
     return (
 
 
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
-            <h1 className="text-center font-bold">{game.title}</h1>
+            <h1 onClick={() => console.log(selectGame())} className="text-center font-bold">{game.title}</h1>
             <img src={game.thumbnail} alt={game.title} onClick={() => setShowForm(!showForm)} />
             <p>Publisher: {game.publisher}</p>
             <p>Developer: {game.developer}</p>
@@ -41,14 +57,7 @@ function GameCard({game, selectGame}) {
             <h3>Genre: {game.genre}</h3>
             <h4>Release Date: {game.release_date}</h4>
             <h4>Description: {game.short_description}</h4>
-            {showForm ? 
-                <form onSubmit={addReview}>
-                    <input onChange={userInput} name='review' />
-                    <input onChange={userInput} name='rating' />
-                    <input type='submit' />
-                </form>
-            :
-            null}
+            {currentUser ? showReviewForm() : null}
 
         </div>
     )
