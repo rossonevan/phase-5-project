@@ -17,8 +17,6 @@ function App() {
 
   const updateUser = (user) => setCurrentUser(user)
 
-  console.log(currentUser)
-
 
   // GET all games from API
   const [gameData, setGameData] = useState([]);
@@ -57,7 +55,6 @@ function App() {
     }, [])
 
 
-  // console.log(selectedGame)
 
 
   if(errors) return <h1>{errors}</h1>

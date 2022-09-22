@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 
 function GameCard({game, selectGame, currentUser}) {
@@ -44,12 +45,16 @@ function GameCard({game, selectGame, currentUser}) {
             </div>
         )}
 
+        const handleSelectedGame = () => {
+            selectGame(game)
+        }
+
 
     return (
 
 
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
-            <h1 onClick={() => console.log(selectGame())} className="text-center font-bold">{game.title}</h1>
+            <Link to='/game' onClick={handleSelectedGame} className="text-center font-bold">{game.title}</Link>
             <img src={game.thumbnail} alt={game.title} onClick={() => setShowForm(!showForm)} />
             <p>Publisher: {game.publisher}</p>
             <p>Developer: {game.developer}</p>
