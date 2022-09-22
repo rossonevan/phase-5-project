@@ -19,7 +19,6 @@ function UserPage({updateUser, currentUser}) {
             }
         })
     }
-    console.log(currentUser)
 
     useEffect(() => {
         getReviews()
