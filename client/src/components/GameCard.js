@@ -1,12 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 
-function GameCard({game, currentUser}) {
+function GameCard({game, currentUser, handleReviews}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
-     const [showReviews, setShowReviews] = useState(false)
+    const [showReviews, setShowReviews] = useState(false)
 
     const toggleReviews = () => {
         setShowReviews(showReviews => !showReviews)
@@ -24,7 +24,7 @@ function GameCard({game, currentUser}) {
             ...game
         }
 
-
+        // POST a review
         fetch('/reviews', {
             method: 'POST',
             headers: {
@@ -32,23 +32,44 @@ function GameCard({game, currentUser}) {
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(console.log)
+        .then(data => handleReviews(data))
+        e.target.reset()
     }
 
+        // Toggle Add Review Form
+    const showReviewForm = () => {
+        return (
+        <div>
+        {showForm ? 
+            <form className='text-black' onSubmit={addReview}>
+                <input type='text' onChange={userInput} name='comment' placeholder='Comment'/>
+                <input type='number' onChange={userInput} name='rating' placeholder='Rating'/>
+                <input type='submit' />
+            </form>
+        :
+        null}
+        </div>
+    )}
 
-        const showReviewForm = () => {
+        // Add Review Button
+        const showAddReviewButton = () => {
             return (
-            <div>
-            {showForm ? 
-                <form className='text-black' onSubmit={addReview}>
-                    <input type='text' onChange={userInput} name='comment' placeholder='Comment'/>
-                    <input type='number' onChange={userInput} name='rating' placeholder='Rating'/>
-                    <input type='submit' />
-                </form>
-            :
-            null}
-            </div>
-        )}
+                <>
+                {showForm ? (<button onClick={() => setShowForm(!showForm)}>Cancel</button>) : (<button onClick={() => setShowForm(!showForm)}>Add A Review</button>)}
+                </>
+            )
+        }
+
+        // const filteredUndefined = reviews ? reviews.filter( function (review){
+        //     return review !== undefined;
+        // }) : null
+
+        // const reviewList = filteredUndefined.map(review => {
+        //     return <>
+        //         <h1>{review.comment}</h1>
+        //         <h1>{review.rating}</h1>
+        //     </>
+        // })
 
 
     return (
@@ -60,10 +81,11 @@ function GameCard({game, currentUser}) {
             <h3>Platform: {game.platform}</h3> 
             <h3>Genre: {game.genre}</h3>
             <button onClick={toggleReviews}>Show Reviews</button>
-            {showReviews ? <div><h1>Reviews</h1></div> : null}
+            {/* {showReviews ? {reviewList} : null} */}
             <br></br>
             {currentUser ? showReviewForm() : null}
-            {showForm ? (<button onClick={() => setShowForm(!showForm)}>Cancel</button>) : (<button onClick={() => setShowForm(!showForm)}>Add A Review</button>)}
+            {currentUser ? showAddReviewButton() : null}
+                
         </div>
     )
 }

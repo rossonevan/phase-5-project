@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
         render json: reviews, status: :ok
     end 
 
-    # def show
-    #     review = find_review
-    #     render json: review, status: :ok
-    # end
+    def show
+        review = find_review
+        render json: review, status: :ok
+    end
 
     def create
         user = current_user

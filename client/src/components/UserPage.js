@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-function UserPage({updateUser, currentUser}) {
+function UserPage({updateUser, currentUser, reviews}) {
 
     const [loading, setLoading] = useState(true)
     const [errors, setErrors] = useState(false)
@@ -20,6 +20,8 @@ function UserPage({updateUser, currentUser}) {
         })
     }
 
+    console.log(reviews)
+    
     useEffect(() => {
         getReviews()
     }, [])

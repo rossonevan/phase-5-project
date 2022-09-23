@@ -4,7 +4,13 @@ class GamesController < ApplicationController
 
     def from_api 
         r = RestClient.get('https://www.freetogame.com/api/games')
+        # JSON.parse(r.body) #This is how we get into the data (changes to an array)
         render json: r.body
+    end
+
+    def index
+        games = Game.all
+        render json: games, status: :ok
     end
 
     def show
