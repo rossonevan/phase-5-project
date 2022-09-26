@@ -12,7 +12,6 @@ function GameCard({game, currentUser, handleReviews, getLocalGames}) {
         setForm( pF => ({...pF, [e.target.name]: e.target.value}))
     }
 
-
     const history = useHistory()
 
     const addReview = e => {

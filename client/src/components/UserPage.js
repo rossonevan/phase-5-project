@@ -19,8 +19,6 @@ function UserPage({updateUser, currentUser, reviews}) {
             }
         })
     }
-
-    console.log(reviews)
     
     useEffect(() => {
         getReviews()
@@ -36,7 +34,8 @@ function UserPage({updateUser, currentUser, reviews}) {
                 {currentUser.reviews.map(review => {
                     return (
                         <div>
-                            <img src={review.game.thumbnail} alt={review.game.title} />
+                            <h1> {review.game.title} </h1>
+                            <p>{review.comment}</p>
                         </div>
                     )
                 })}
