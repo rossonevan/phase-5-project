@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     
     def show
         if current_user
-            render json: current_user, status: :ok
+            render json: current_user, status: :ok, include: ['reviews', 'reviews.game']
         else
             render json: {error: "No current session stored"}, status: :unauthorized
         end

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 
 
@@ -6,11 +6,6 @@ function GameCard({game, currentUser, handleReviews}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
-    const [showReviews, setShowReviews] = useState(false)
-
-    const toggleReviews = () => {
-        setShowReviews(showReviews => !showReviews)
-    }
 
     const userInput = e => {
         setForm( pF => ({...pF, [e.target.name]: e.target.value}))
@@ -59,18 +54,7 @@ function GameCard({game, currentUser, handleReviews}) {
                 </>
             )
         }
-
-        // const filteredUndefined = reviews ? reviews.filter( function (review){
-        //     return review !== undefined;
-        // }) : null
-
-        // const reviewList = filteredUndefined.map(review => {
-        //     return <>
-        //         <h1>{review.comment}</h1>
-        //         <h1>{review.rating}</h1>
-        //     </>
-        // })
-
+      
 
     return (
 
@@ -80,8 +64,6 @@ function GameCard({game, currentUser, handleReviews}) {
             <img src={game.thumbnail} alt={game.title} />
             <h3>Platform: {game.platform}</h3> 
             <h3>Genre: {game.genre}</h3>
-            <button onClick={toggleReviews}>Show Reviews</button>
-            {/* {showReviews ? {reviewList} : null} */}
             <br></br>
             {currentUser ? showReviewForm() : null}
             {currentUser ? showAddReviewButton() : null}

@@ -4,18 +4,19 @@ class GamesController < ApplicationController
 
     def from_api 
         r = RestClient.get('https://www.freetogame.com/api/games')
-        # JSON.parse(r.body) #This is how we get into the data (changes to an array)
+        # JSON.parse(r.body) This is how we get into the data (changes to an array)
+        # JSON.parse(r.body).map { |game| game['title']} Grabs all titles 
         render json: r.body
     end
 
     def index
         games = Game.all
-        render json: games, status: :ok
+        render json: games, status: :ok, include: ['reviews', 'reviews.user']
     end
 
     def show
         game = find_game
-        render json: game, status: :ok
+        render json: game, status: :ok, include: ['reviews', 'reviews.user']
     end
 
     private

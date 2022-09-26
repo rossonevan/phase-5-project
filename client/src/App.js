@@ -7,7 +7,7 @@ import Navigation from './components/Navigation';
 // import GameDetail from './components/GameDetail';
 import UserPage from './components/UserPage';
 import { useState, useEffect } from 'react';
-import GameCard from './components/GameCard';
+import ReviewedGames from './components/ReviewedGames';
 
 
 function App() {
@@ -81,11 +81,21 @@ function App() {
   //GET games from local database
   const [localGames, setLocalGames] = useState([])
 
-  useEffect(() => {
+  const getLocalGames = () => {
     fetch('/games')
     .then(res => res.json())
     .then(data => setLocalGames(data))
-  }, [])
+  }
+  
+  useEffect(() => {getLocalGames()}, [])
+
+  const handleDelete = () => {
+    getLocalGames()
+  }
+
+  const handlePatch = () => {
+    getLocalGames()
+  }
 
   if(errors) return <h1>{errors}</h1>
 
@@ -97,7 +107,10 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <Home games={gameData} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames}/>
+          <Home games={gameData} currentUser={currentUser} handleReviews={handleReviews}/>
+        </Route>
+        <Route path='/reviewed_games'>
+          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} updateUser={updateUser} reviews={reviews}/>
