@@ -1,8 +1,9 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 
 
-function GameCard({game, currentUser, handleReviews}) {
+function GameCard({game, currentUser, handleReviews, getLocalGames}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -10,6 +11,9 @@ function GameCard({game, currentUser, handleReviews}) {
     const userInput = e => {
         setForm( pF => ({...pF, [e.target.name]: e.target.value}))
     }
+
+
+    const history = useHistory()
 
     const addReview = e => {
         e.preventDefault()
@@ -27,8 +31,8 @@ function GameCard({game, currentUser, handleReviews}) {
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(data => handleReviews(data))
-        e.target.reset()
+        .then(data => handleReviews(data), getLocalGames())
+        history.push('/reviewed_games')
     }
 
         // Toggle Add Review Form

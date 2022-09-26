@@ -3,13 +3,13 @@ import EditForm from './EditForm';
 
 
 
-function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch}) {
+function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch, getLocalGames}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
     const [showReviews, setShowReviews] = useState(false)
 
-    
+
     const handleRemove = (id) => {
         fetch(`/reviews/${id}`, {
             method: "DELETE",
@@ -44,9 +44,9 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
 
     const addReview = e => {
         e.preventDefault()
-
         const infoToSend = {
-            ...form
+            ...form,
+            ...localGame
         }
 
         // POST a review
@@ -57,7 +57,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(data => handleReviews(data))
+        .then(data => handleReviews(data), getLocalGames())
         e.target.reset()
     }
 
@@ -85,7 +85,6 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         )
     }
 
-
     return (
 
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
@@ -93,7 +92,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             <img src={localGame.thumbnail} alt={localGame.title} />
             <h3>Platform: {localGame.platform}</h3> 
             <h3>Genre: {localGame.genre}</h3>
-            <button onClick={toggleReviews}>Show Reviews</button>  
+            { localGame.reviews.length !== 0 ? <button onClick={toggleReviews}>Show Reviews</button> : "There are no reviews for this game."}
             {showReviews ? reviewList : null}
             <br></br>
             {currentUser ? showReviewForm() : null}

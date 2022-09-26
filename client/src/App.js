@@ -22,13 +22,6 @@ function App() {
   // GET all games from API
   const [gameData, setGameData] = useState([]);
   const [errors, setErrors] = useState(false);
-  
-  // Selected Game for review
-  // const [selectedGame, setSelectedGame] = useState(false)
-
-  // const selectGame = (game) => {
-  //   setSelectedGame(game)
-  // }
 
   // GET all games from API
   useEffect(() => {
@@ -68,16 +61,6 @@ function App() {
     setReviews(oldReviews => [...oldReviews, addedReview])
   }
 
-  // const renderNewReviews = (newReview) => {
-  //   const newState = reviews.map(obj => {
-  //     if(obj.id === newReview.id) {
-  //       obj.reviews.push(newReview)
-  //     }
-  //     return obj;
-  //   })
-  //   setReviews(newState)
-  // }
-
   //GET games from local database
   const [localGames, setLocalGames] = useState([])
 
@@ -107,10 +90,10 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <Home games={gameData} currentUser={currentUser} handleReviews={handleReviews}/>
+          <Home games={gameData} currentUser={currentUser} handleReviews={handleReviews} getLocalGames={getLocalGames}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch}/>
+          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} getLocalGames={getLocalGames}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} updateUser={updateUser} reviews={reviews}/>
