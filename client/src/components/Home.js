@@ -1,15 +1,15 @@
-import GameList from "./GameList"
+// import GameList from "./GameList"
 
 
 
-function Home({games, currentUser, handleReviews, localGames, getLocalGames}) {
+// function Home({games, currentUser, handleReviews, localGames, getLocalGames}) {
 
 
-    return (
-        <div>
-            <GameList games={games} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames} getLocalGames={getLocalGames} />
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <GameList games={games} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames} getLocalGames={getLocalGames} />
+//         </div>
+//     )
+// }
 
-export default Home
+// export default Home

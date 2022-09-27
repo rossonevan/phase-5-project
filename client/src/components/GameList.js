@@ -15,7 +15,6 @@ function GameList({games, currentUser, handleReviews, getLocalGames}) {
         key={game.id}
         />
     })
-
             
     return (
         <div className=" p- rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">

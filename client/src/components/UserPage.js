@@ -24,24 +24,22 @@ function UserPage({updateUser, currentUser, reviews}) {
         getReviews()
     }, [])
 
-    if(loading) return <h1>Loading...</h1>
+    if(loading) return <h1 className='text-center text-lg text-white'>Loading...</h1>
     if(errors) return <h1>{errors}</h1>
 
     return (
-        <div className="block p-4 rounded-lg shadow-sm shadow-indigo-100">
-            <h1 className='text-center text-6xl text-white'>My Reviews</h1>
-            <ul className=" flex-wrap p-6 bg-white sm:p-4 sm:m-10 rounded-xl w-3/12">
-                {currentUser.reviews.map(review => {
-                    return (
-                        <div>
-                            <h1> {review.game.title} </h1>
-                            <p>{review.comment}</p>
+        <article className="p-6 bg-white sm:p-4 sm:m-10 rounded-xl ring ring-blue-50">
+            {currentUser.reviews.map(review => {
+                return (
+                    <div className="flex items-start">
+                        <div class="sm:ml-8">                            
+                            <h1 className="mt-4 text-lg text-grey-500 font-medium sm:text-xl">{review.game.title}</h1>
+                            <h1 className="mt-1 text-sm text-grey-100">{review.comment}</h1>
                         </div>
-                    )
-                })}
-
-            </ul>
-        </div>
+                    </div>
+                )
+            })}         
+        </article>
     )
 }
 

@@ -69,8 +69,7 @@ function GameCard({game, currentUser, handleReviews, getLocalGames}) {
             <h3 className='h-8 pt-2'>Genre: {game.genre}</h3>
             <h3 className='h-8 pt-2'>Platform: {game.platform}</h3> 
             <h3 className='h-8 pt-2'>Release Date: {game.release_date}</h3>
-            <h3 className='h-8 pt-2'>Publisher: {game.publisher}</h3>
-            <h3 className='h-8 pt-2'>Developer: {game.publisher}</h3>
+            <h3 className='h-8 pt-2'>Developer: {game.developer}</h3>
             {showDescription ? (<h3 className='h-8 pt-2'>Description: {game.short_description}</h3>) : null}
             <br></br>
             <div className='text-center pt-8'>

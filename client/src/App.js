@@ -1,6 +1,6 @@
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
-import Home from './components/Home';
+import GameList from './components/GameList';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
@@ -90,7 +90,7 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <Home games={gameData} currentUser={currentUser} handleReviews={handleReviews} getLocalGames={getLocalGames}/>
+          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} getLocalGames={getLocalGames}/>
         </Route>
         <Route path='/reviewed_games'>
           <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} getLocalGames={getLocalGames}/>
