@@ -20,7 +20,7 @@ function Navigation({currentUser, updateUser}) {
                     <div className="flex lg:w-0 lg:flex-1">
                         <Link to='/' className='text-4xl font-bold text-center text-white font-style'>Worth-to-Play?</Link>
                     </div>
-                        <NavLink to='/reviewed_games' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3">Reviewed Games</NavLink>
+                        <NavLink to='/reviewed_games' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3 ">Reviewed Games</NavLink>
                         {currentUser ?
                             <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
                                 <h3 className='text-white'>Welcome, {currentUser.username}</h3>

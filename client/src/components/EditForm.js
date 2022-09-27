@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import UserPage from './UserPage';
 
-function EditForm ({currentUser, handlePatch, review}) {
+function EditForm ({ handlePatch, review}) {
 
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(0)
