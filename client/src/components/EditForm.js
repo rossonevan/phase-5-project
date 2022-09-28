@@ -34,8 +34,8 @@ function EditForm ({ handlePatch, review, setChange, change}) {
 
     const editFormInputs = 
         <form className='text-black' onSubmit={handleEditForm}>
-            <input onChange={(e) => setRating(e.target.value)} name="rating" type="number" min="0" max="5" step="1" placeholder="Insert Rating Here" required />
-            <textarea onChange={(e) => setComment(e.target.value)} name="comment" type='text' placeholder="Write Your Review Here" maxLength='500' required />
+            <input className='bg-gray-300 rounded pl-2' onChange={(e) => setComment(e.target.value)} name="comment" type='text' placeholder="Write Your Review Here" maxLength='500' required />
+            <input className='bg-gray-300 rounded pl-2 m-2' onChange={(e) => setRating(e.target.value)} name="rating" type="number" min="0" max="5" step="1" placeholder="Rating" required />
             <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full">Edit</button>
         </form>
 

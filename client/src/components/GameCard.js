@@ -44,9 +44,9 @@ function GameCard({game, currentUser, handleReviews, setChange, change}) {
         <div>
         {showForm ? 
             <form className='text-black' onSubmit={addReview}>
-                <input type='text' onChange={userInput} name='comment' placeholder='Comment'/>
-                <input type='number' onChange={userInput} name='rating' placeholder='Rating'/>
-                <input className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type='submit' />
+                <input className='rounded pl-1 m-2' type='text' onChange={userInput} name='comment' placeholder='Comment' required/>
+                <input className='rounded pl-1 m-2' type='number' onChange={userInput} name='rating' placeholder='Rating' required/>
+                <input className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mb-6" type='submit' />
             </form>
         :
         null}

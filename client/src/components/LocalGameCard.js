@@ -73,9 +73,9 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         <div>
         {showForm ? 
             <form className='text-black' onSubmit={addReview}>
-                <input className='rounded pl-1 m-2' type='text' onChange={userInput} name='comment' placeholder='Comment'/>
-                <input className='rounded pl-1 m-2' type='number' onChange={userInput} name='rating' placeholder='Rating'/>
-                <button  type='submit' className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"> Submit</button>
+                <input className='rounded pl-1 m-2' type='text' onChange={userInput} name='comment' placeholder='Comment' required/>
+                <input className='rounded pl-1 m-2' type='number' min='0' max='5' onChange={userInput} name='rating' placeholder='Rating' required/>
+                <button  type='submit' className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full m-2"> Submit</button>
             </form>
         :
         null}
@@ -86,7 +86,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     const showAddReviewButton = () => {
         return (
             <>
-            {showForm ? (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Cancel</button>) : (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Add A Review</button>)}
+            {showForm ? (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full m-4">Cancel</button>) : (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full m-4">Add A Review</button>)}
             </>
         )
     }
@@ -97,8 +97,8 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             <h1 className="text-center text-normal font-bold h-8">{localGame.title}</h1>
             <img src={localGame.thumbnail} alt={localGame.title} className='w-full' />
             <div className='flow-root'>
-                <h3 className='h-8 pt-2 float-left'>Platform: {localGame.platform}</h3> 
-                <h3 className='h-10 pt-2 float-right'>Genre: {localGame.genre}</h3>
+                <h3 className='h-8 pt-2 float-left'><strong>Platform:</strong> {localGame.platform}</h3> 
+                <h3 className='h-10 pt-2 float-right'><strong>Genre:</strong> {localGame.genre}</h3>
             </div>
             {localGame.reviews.length !== 0 ? <button onClick={toggleReviews} className= 'hover:text-red-500 text-white font-bold'>Reviews</button> : "There are no reviews for this game."}
             {showReviews ? reviewList : null}
