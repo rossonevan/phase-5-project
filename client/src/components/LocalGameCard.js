@@ -27,10 +27,10 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     // List of Reviews
     const reviewList = localGame.reviews.map( review => {
         return (
-            <div className='border-2 border-red-600 rounded bg-white text-black text-center'>
-                <h4>User: {review.user.username}</h4>
-                <p>Rating: {review.rating}</p>
+            <div className='border-2 border-red-600 rounded bg-white text-black text-center m-4'>
                 <p>{review.comment}</p>
+                <p><strong>Rating:</strong> {review.rating}</p>
+                <h4><strong>User:</strong> {review.user.username}</h4>
                 {currentUser.id === review.user.id ?
                 (<div className='flow-root'>
                     <EditForm handlePatch={handlePatch} review={review} setChange={setChange} change={change}/>

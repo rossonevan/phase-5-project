@@ -3,21 +3,24 @@ import { useEffect, useState } from "react"
 
 function UserPage({updateUser, currentUser, reviews}) {
 
-
+    let i = 1
 
     return (
-        <article className="p-6 bg-white sm:p-4 sm:m-10 rounded-xl ring ring-blue-50">
-            <h1 className="text-3xl border-b border-gray-400">Reviews:</h1>
-            {currentUser.reviews.map(review => {
+        <article className="p-6 bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-10 rounded-xl ring ring-blue-50">
+            <h1 className="text-3xl border-b border-gray-400 text-white">Reviews</h1>
+            <div className="flex flex-wrap">
+            {currentUser.reviews?.map(review => {
                 return (
-                    <div className="flex items-start">
-                        <div class="sm:ml-8">                            
-                            <h1 className="mt-4 text-lg text-grey-500 font-medium sm:text-xl">{review.game.title}</h1>
-                            <h1 className="mt-1 text-sm text-grey-100">{review.comment}</h1>
+                    <div className="flex items-start bg-white border w-64 m-4">
+                        <div className="sm:ml-8">  
+                            <h1 className="mt-4 text-lg text-black font-medium sm:text-2xl underline ">Review {i++}</h1>                          
+                            <h1 className="mt-2 text-lg text-black sm:text-lg">Game: {review.game.title}</h1>
+                            <h1 className="mt-1 text-sm text-black mb-2">Comment: {review.comment}</h1>
                         </div>
                     </div>
                 )
-            })}         
+            })}  
+            </div>       
         </article>
     )
 }
