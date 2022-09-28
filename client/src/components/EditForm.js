@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function EditForm ({ handlePatch, review}) {
+function EditForm ({ handlePatch, review, setChange, change}) {
 
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(0)
@@ -25,7 +25,10 @@ function EditForm ({ handlePatch, review}) {
             })
         })
         .then((resp) => resp.json())
-        .then(newReview => handlePatch(newReview))
+        .then(review => {
+            handlePatch(review)
+            setChange(!change)
+        })
         e.target.reset()
     }
 

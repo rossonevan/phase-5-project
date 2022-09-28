@@ -3,7 +3,7 @@ import EditForm from './EditForm';
 
 
 
-function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch, getLocalGames}) {
+function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch, setChange, change}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -14,7 +14,10 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         fetch(`/reviews/${id}`, {
             method: "DELETE",
         })
-        .then(() => handleDelete());
+        .then((review) => {
+        handleDelete(review)
+        setChange(!change)
+        });
     }
 
     const toggleReviews = () => {
@@ -30,7 +33,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
                 <p>{review.comment}</p>
                 {currentUser.id === review.user.id ?
                 (<div className='flow-root'>
-                    <EditForm handlePatch={handlePatch} review={review} />
+                    <EditForm handlePatch={handlePatch} review={review} setChange={setChange} change={change}/>
                     <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-right">Remove Review</button>
                 </div>) 
                     : null}
@@ -57,7 +60,10 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(data => handleReviews(data), getLocalGames())
+        .then(data => {
+            handleReviews(data)
+            setChange(!change)
+        })
         e.target.reset()
     }
 

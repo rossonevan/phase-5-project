@@ -11,7 +11,8 @@ import ReviewedGames from './components/ReviewedGames';
 
 
 function App() {
-
+  
+  const [change, setChange] = useState(false);
 
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
@@ -33,7 +34,7 @@ function App() {
           res.json().then(data => setErrors(data.error))
         }
       })
-    }, [])
+    }, [change])
 
   // Set currently logged in state
   useEffect(() => {
@@ -47,38 +48,42 @@ function App() {
               res.json().then(data => setErrors(data.error))
           }
       })
-  }, [])
+  }, [change])
 
   // GET all reviews
   useEffect(() => {
     fetch('/reviews')
     .then(res => res.json())
     .then(data => setReviews(data))
-  }, [])
+  }, [change])
 
   //Add new Review to database
-  const handleReviews = (addedReview) => {
-    setReviews(oldReviews => [...oldReviews, addedReview])
+  const handleReviews = (newReview) => {
+    setReviews(reviews => [...reviews, newReview])
   }
 
   //GET games from local database
   const [localGames, setLocalGames] = useState([])
 
-  const getLocalGames = () => {
+  
+  useEffect(() => {
     fetch('/games')
     .then(res => res.json())
     .then(data => setLocalGames(data))
+  }, [change])
+
+  const handleDelete = (reviewToDelete) => {
+    const updatedReviews = reviews.filter(review => review.id !== reviewToDelete.id)
+    setReviews(updatedReviews)
   }
+
+  const handlePatch = (updatedReview) => {
+    const updatedReviews = reviews.map((review) =>
+      review.id === updatedReview.id ? updatedReview : review
+      )
+      setReviews(updatedReviews)
+    }
   
-  useEffect(() => {getLocalGames()}, [])
-
-  const handleDelete = () => {
-    getLocalGames()
-  }
-
-  const handlePatch = () => {
-    getLocalGames()
-  }
 
   if(errors) return <h1>{errors}</h1>
 
@@ -90,10 +95,10 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} getLocalGames={getLocalGames}/>
+          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames} setChange={setChange} change={change}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} getLocalGames={getLocalGames}/>
+          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} setChange={setChange} change={change}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} updateUser={updateUser} reviews={reviews}/>
