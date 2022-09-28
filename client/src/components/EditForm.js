@@ -39,7 +39,7 @@ function EditForm ({ handlePatch, review}) {
 
     return (
         <div>
-            {editForm ? <button onClick={toggleEditForm} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full">Cancel Editing Review</button> : <button onClick={toggleEditForm} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full">Edit Review</button> }
+            {editForm ? <button onClick={toggleEditForm} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-left">Cancel Editing Review</button> : <button onClick={toggleEditForm} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-left">Edit Review</button> }
             {editForm ? editFormInputs: null}
         </div>
     )

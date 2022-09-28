@@ -23,6 +23,7 @@ function UserPage({updateUser, currentUser, reviews}) {
     useEffect(() => {
         getReviews()
     }, [])
+    
 
     if(loading) return <h1 className='text-center text-lg text-white'>Loading...</h1>
     if(errors) return <h1>{errors}</h1>

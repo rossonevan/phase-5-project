@@ -24,14 +24,14 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     // List of Reviews
     const reviewList = localGame.reviews.map( review => {
         return (
-            <div className='border-2 border-red-600 text-center'>
+            <div className='border-2 border-red-600 rounded bg-white text-black text-center'>
                 <h4>User: {review.user.username}</h4>
-                <p>{review.comment}</p>
                 <p>Rating: {review.rating}</p>
+                <p>{review.comment}</p>
                 {currentUser.id === review.user.id ?
-                (<div className=''>
+                (<div className='flow-root'>
                     <EditForm handlePatch={handlePatch} review={review} />
-                    <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full">Remove Review</button>
+                    <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-right">Remove Review</button>
                 </div>) 
                     : null}
             </div>
@@ -90,8 +90,10 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
             <h1 className="text-center text-normal font-bold h-8">{localGame.title}</h1>
             <img src={localGame.thumbnail} alt={localGame.title} className='w-full' />
-            <h3 className='h-8 pt-2'>Platform: {localGame.platform}</h3> 
-            <h3 className='h-10 pt-2'>Genre: {localGame.genre}</h3>
+            <div className='flow-root'>
+                <h3 className='h-8 pt-2 float-left'>Platform: {localGame.platform}</h3> 
+                <h3 className='h-10 pt-2 float-right'>Genre: {localGame.genre}</h3>
+            </div>
             {localGame.reviews.length !== 0 ? <button onClick={toggleReviews} className= 'hover:text-red-500 text-white font-bold'>Reviews</button> : "There are no reviews for this game."}
             {showReviews ? reviewList : null}
             <br></br>
