@@ -73,9 +73,9 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         <div>
         {showForm ? 
             <form className='text-black' onSubmit={addReview}>
-                <input type='text' onChange={userInput} name='comment' placeholder='Comment'/>
-                <input type='number' onChange={userInput} name='rating' placeholder='Rating'/>
-                <input type='submit' className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"/>
+                <input className='rounded pl-1 m-2' type='text' onChange={userInput} name='comment' placeholder='Comment'/>
+                <input className='rounded pl-1 m-2' type='number' onChange={userInput} name='rating' placeholder='Rating'/>
+                <button  type='submit' className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"> Submit</button>
             </form>
         :
         null}

@@ -20,17 +20,17 @@ function Navigation({currentUser, updateUser}) {
                     <div className="flex lg:w-0 lg:flex-1">
                         <Link to='/' className='text-4xl font-bold text-center text-white font-style'>Worth-to-Play?</Link>
                     </div>
-                        <NavLink to='/reviewed_games' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3 ">Reviewed Games</NavLink>
+                        <NavLink to='/reviewed_games' activeClassName='bg-red-900' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3 ">Reviewed Games</NavLink>
                         {currentUser ?
                             <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
                                 <h3 className='text-white'>Welcome, {currentUser.username}</h3>
-                                <NavLink className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3" exact to='/me'>My Reviews</NavLink>
+                                <NavLink activeClassName='bg-red-900' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3" exact to='/me'>My Reviews</NavLink>
                                 <button onClick={handleLogout} className='inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Log Out</button>
                             </div> 
                             :
                             <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
-                                <NavLink to='/signup' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Signup</NavLink>
-                                <NavLink to='/login' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Login</NavLink>
+                                <NavLink activeClassName='bg-red-900' to='/signup' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Signup</NavLink>
+                                <NavLink activeClassName='bg-red-900' to='/login' className='inline-block  hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Login</NavLink>
                             </div>
                         }
                 </div>

@@ -70,14 +70,14 @@ function GameCard({game, currentUser, handleReviews, setChange, change}) {
             <h1 className="text-center text-lg font-bold h-10">{game.title}</h1>
             <img src={game.thumbnail} alt={game.title} onClick={() => setShowDescription(!showDescription)} className='w-full cursor-pointer'/>
             <div className='flow-root'>
-                <h3 className='h-8 pt-2 float-left'>Genre: {game.genre}</h3>
-                <h3 className='h-8 pt-2 float-right'>Platform: {game.platform}</h3> 
+                <h3 className='h-8 pt-2 float-left'><strong>Genre:</strong> {game.genre}</h3>
+                <h3 className='h-8 pt-2 float-right'><strong>Platform:</strong> {game.platform}</h3> 
             </div>
             <div className='flow-root'>
-            <h3 className='h-8 pt-2 float-left'>Release Date: {game.release_date}</h3>
-            <h3 className='h-8 pt-2 float-right'>Developer: {game.developer}</h3>
+            <h3 className='h-8 pt-2 float-left'><strong>Release Date:</strong> {game.release_date}</h3>
+            <h3 className='h-8 pt-2 float-right'><strong>Developer:</strong> {game.developer}</h3>
             </div>
-            {showDescription ? (<h3 className='h-22 pt-2'>Description: {game.short_description}</h3>) : null}
+            {showDescription ? (<h3 className='h-22 pt-2'><strong>Description:</strong> {game.short_description}</h3>) : null}
             <br></br>
             <div className='text-center pt-6'>
                 {currentUser ? showReviewForm() : null}
