@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 
 
 
-function GameCard({game, currentUser, handleReviews}) {
+function GameCard({game, currentUser, handleReviews, change, setChange}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -31,8 +31,9 @@ function GameCard({game, currentUser, handleReviews}) {
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(data => {
-            handleReviews(data)
+        .then(review => {
+            handleReviews(review)
+            setChange(!change)
         })
         history.push('/reviewed_games')
     }
