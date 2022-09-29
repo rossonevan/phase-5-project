@@ -2,7 +2,7 @@ import GameCard from "./GameCard"
 import {useEffect, useState} from 'react';
 
 
-function GameList({games, currentUser, handleReviews, localGames, setChange, change}) {
+function GameList({games, currentUser, handleReviews, localGames}) {
     
     const gamesLimit = games.slice(0,51)
 
@@ -12,8 +12,6 @@ function GameList({games, currentUser, handleReviews, localGames, setChange, cha
         currentUser={currentUser}
         handleReviews={handleReviews}
         localGames={localGames}
-        setChange={setChange}
-        change={change}
         key={game.id}
         />
     })

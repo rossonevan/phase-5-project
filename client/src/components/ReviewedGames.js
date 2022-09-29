@@ -2,7 +2,7 @@ import LocalGameCard from "./LocalGameCard"
 
 
 
-function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handleDelete, handlePatch, setChange, change}) {
+function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handleDelete, handlePatch}) {
 
    
     const localGameComponents = localGames.map(localGame => {
@@ -13,8 +13,6 @@ function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handl
         handleReviews={handleReviews}
         handleDelete={handleDelete}
         handlePatch={handlePatch}
-        setChange={setChange}
-        change={change}
         key={localGame.id}
         />
     })

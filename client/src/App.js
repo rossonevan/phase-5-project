@@ -4,15 +4,12 @@ import GameList from './components/GameList';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
-// import GameDetail from './components/GameDetail';
 import UserPage from './components/UserPage';
 import { useState, useEffect } from 'react';
 import ReviewedGames from './components/ReviewedGames';
 
 
 function App() {
-  
-  const [change, setChange] = useState(false);
 
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
@@ -34,7 +31,7 @@ function App() {
           res.json().then(data => setErrors(data.error))
         }
       })
-    }, [change])
+    }, [gameData])
 
   // Set currently logged in state
   useEffect(() => {
@@ -48,14 +45,14 @@ function App() {
               res.json().then(data => setErrors(data.error))
           }
       })
-  }, [change])
+  }, [currentUser])
 
   // GET all reviews
   useEffect(() => {
     fetch('/reviews')
     .then(res => res.json())
     .then(data => setReviews(data))
-  }, [change])
+  }, [reviews])
 
   //Add new Review to database
   const handleReviews = (newReview) => {
@@ -70,7 +67,7 @@ function App() {
     fetch('/games')
     .then(res => res.json())
     .then(data => setLocalGames(data))
-  }, [change])
+  }, [localGames])
 
   const handleDelete = (reviewToDelete) => {
     const updatedReviews = reviews.filter(review => review.id !== reviewToDelete.id)
@@ -95,10 +92,10 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames} setChange={setChange} change={change}/>
+          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} localGames={localGames}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} setChange={setChange} change={change}/>
+          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} />
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />
