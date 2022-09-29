@@ -75,8 +75,23 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         <div>
         {showForm ? 
             <form className='text-black' onSubmit={addReview}>
-                <input className='rounded pl-1 m-2' type='text' onChange={userInput} name='comment' placeholder='Comment' required/>
-                <input className='rounded pl-1 m-2' type='number' min='0' max='5' onChange={userInput} name='rating' placeholder='Rating' required/>
+                <textarea className='
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' type='text' onChange={userInput} name='comment' placeholder='Write your review...' required />
+                <input className='rounded pl-1 m-2 w-20' type='number' min='0' max='5' onChange={userInput} name='rating' placeholder='Rating' required/>
                 <button  type='submit' className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full m-2"> Submit</button>
             </form>
         :
