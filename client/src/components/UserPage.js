@@ -1,8 +1,24 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import {useHistory} from 'react-router-dom';
 
 
-function UserPage({updateUser, currentUser, reviews}) {
+function UserPage({currentUser}) {
 
+    const history = useHistory()
+
+    useEffect( () => {
+        if (!currentUser) {
+            fetch('/me')
+            .then(res => {
+                if (!res.ok) {
+                    history.push('/login')
+                }
+            })
+        }   
+    }, [])
+
+    console.log(currentUser)
+    
     let i = 1
 
     return (

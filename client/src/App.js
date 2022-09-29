@@ -79,10 +79,10 @@ function App() {
 
   const handlePatch = (updatedReview) => {
     const updatedReviews = reviews.map((review) =>
-      review.id === updatedReview.id ? updatedReview : review
-      )
-      setReviews(updatedReviews)
-    }
+        review.id === updatedReview.id ? updatedReview : review
+    )
+    setReviews(updatedReviews)
+  }
   
 
   if(errors) return <h1>{errors}</h1>
@@ -101,7 +101,7 @@ function App() {
           <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} setChange={setChange} change={change}/>
         </Route>
         <Route path="/me">
-          <UserPage currentUser={currentUser} updateUser={updateUser} reviews={reviews}/>
+          <UserPage currentUser={currentUser} />
         </Route>
         <Route path='/signup'>
           <Signup updateUser={updateUser} />
