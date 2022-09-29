@@ -1,11 +1,12 @@
-import LocalGameCard from "./LocalGameCard"
+import LocalGameCard from "./LocalGameCard";
 
 
 
 function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handleDelete, handlePatch, change, setChange}) {
 
-   
-    const localGameComponents = localGames.map(localGame => {
+
+
+    const localGameComponents = localGames?.map(localGame => {
         return <LocalGameCard
         reviews = {reviews}
         localGame={localGame}

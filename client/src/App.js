@@ -33,7 +33,7 @@ function App() {
           res.json().then(data => setErrors(data.error))
         }
       })
-    }, [change])
+    }, [])
 
   // Set currently logged in state
   useEffect(() => {
@@ -45,19 +45,20 @@ function App() {
               res.json().then(data => setErrors(data.error))
           }
       })
-  }, [change])
+  }, [])
 
   // GET all reviews
   useEffect(() => {
     fetch('/reviews')
     .then(res => res.json())
     .then(setReviews)
-  }, [change])
+  }, [])
 
   //Add new Review to database
   const handleReviews = (newReview) => {
     setReviews(reviews => [...reviews, newReview])
   }
+
 
   const handleDelete = (reviewToDelete) => {
     const updatedReviews = reviews.filter(review => review.id !== reviewToDelete.id)

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import EditForm from './EditForm';
 
 
@@ -25,14 +25,14 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     }
 
     // List of Reviews
-    const reviewList = localGame.reviews.map( review => {
+    const reviewList = localGame.reviews?.map( review => {
         return (
             <div className='border-2 border-red-600 rounded bg-white text-black text-center m-2'>
                 <div className='flow-root m-2'>
                 <h4 className='float-left'><strong>{review.user.username}</strong></h4>
                 <p className='float-right'><strong>Rating:</strong> {review.rating}</p>
                 </div>
-                <p className='m-2'>{review.comment}</p>
+                <p className='m-2 p-2 break-words'>{review.comment}</p>
                 {currentUser.id === review.user.id ?
                 (<div className='flow-root m-2'>
                     <EditForm handlePatch={handlePatch} review={review} change={change} setChange={setChange}/>
