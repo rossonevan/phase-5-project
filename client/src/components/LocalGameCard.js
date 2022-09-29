@@ -27,14 +27,16 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     // List of Reviews
     const reviewList = localGame.reviews.map( review => {
         return (
-            <div className='border-2 border-red-600 rounded bg-white text-black text-center m-4'>
-                <p>{review.comment}</p>
-                <p><strong>Rating:</strong> {review.rating}</p>
-                <h4><strong>User:</strong> {review.user.username}</h4>
+            <div className='border-2 border-red-600 rounded bg-white text-black text-center m-2'>
+                <div className='flow-root m-2'>
+                <h4 className='float-left'><strong>{review.user.username}</strong></h4>
+                <p className='float-right'><strong>Rating:</strong> {review.rating}</p>
+                </div>
+                <p className='m-2'>{review.comment}</p>
                 {currentUser.id === review.user.id ?
-                (<div className='flow-root'>
+                (<div className='flow-root m-2'>
                     <EditForm handlePatch={handlePatch} review={review} setChange={setChange} change={change}/>
-                    <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-right">Remove Review</button>
+                    <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-right">X</button>
                 </div>) 
                     : null}
             </div>
