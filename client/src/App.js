@@ -156,10 +156,27 @@ const sortedLocalGames = () => {
       </header>
       <Switch>
         <Route exact path='/'>
-          <GameList handleFilterGenre={handleFilterGenre} setSearch={setSearch} games={sortedGameData()} currentUser={currentUser} handleReviews={handleReviews} change={change} setChange={setChange}/>
+          <GameList 
+          handleReviews={handleReviews}
+          reviews={reviews} 
+          handleFilterGenre={handleFilterGenre} 
+          setSearch={setSearch} 
+          games={sortedGameData()} 
+          currentUser={currentUser}  
+          change={change} 
+          setChange={setChange}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames handleFilterGenre={handleFilterGenre} setSearch={setSearch} localGames={sortedLocalGames()} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} change={change} setChange={setChange}/>
+          <ReviewedGames 
+          handleFilterGenre={handleFilterGenre} 
+          setSearch={setSearch} 
+          localGames={sortedLocalGames()} 
+          reviews ={reviews} 
+          currentUser={currentUser} 
+          handleDelete={handleDelete} 
+          handlePatch={handlePatch} 
+          change={change} 
+          setChange={setChange}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />

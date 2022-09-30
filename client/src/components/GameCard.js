@@ -94,8 +94,10 @@ function GameCard({game, currentUser, handleReviews, change, setChange}) {
             </div>
             {showDescription ? (<h3 className='h-22 pt-2'><strong>Description:</strong> {game.short_description}</h3>) : null}
             <br></br>
-            <div className='text-center pt-6'>
-                {currentUser ? showReviewForm() : null}
+            <div className='pt-6'>
+                <div className='text-center'>
+                    {currentUser ? showReviewForm() : null}
+                </div>
                 {currentUser ? showAddReviewButton() : null}
             </div>
                 

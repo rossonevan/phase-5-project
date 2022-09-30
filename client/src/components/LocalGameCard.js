@@ -120,8 +120,10 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             {localGame.reviews.length !== 0 ? <button onClick={toggleReviews} className= 'hover:text-red-500 text-white font-bold'>Reviews</button> : "There are no reviews for this game."}
             {showReviews ? reviewList : null}
             <br></br>
-            <div className='text-center pt-6'>
-                {currentUser ? showReviewForm() : null}
+            <div className='pt-6'>
+                <div className='text-center'>
+                    {currentUser ? showReviewForm() : null}
+                </div>
                 {currentUser ? showAddReviewButton() : null}    
             </div>          
         </div>
