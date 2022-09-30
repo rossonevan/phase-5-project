@@ -32,8 +32,9 @@ class ReviewsController < ApplicationController
 
     def destroy
         review = find_review
+        copy = find_review
         review.destroy
-        head :no_content
+        render json: copy, status: :ok
     end
 
     private

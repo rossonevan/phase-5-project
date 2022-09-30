@@ -45,32 +45,7 @@ function App() {
               res.json().then(data => setErrors(data.error))
           }
       })
-  }, [change])
-
-  // GET all reviews
-  useEffect(() => {
-    fetch('/reviews')
-    .then(res => res.json())
-    .then(setReviews)
   }, [])
-
-  //Add new Review to database
-  const handleReviews = (newReview) => {
-    setReviews(reviews => [...reviews, newReview])
-  }
-
-
-  const handleDelete = (reviewToDelete) => {
-    const updatedReviews = reviews.filter(review => review.id !== reviewToDelete.id)
-    setReviews(updatedReviews)
-  }
-
-  const handlePatch = (updatedReview) => {
-    const updatedReviews = reviews.map((review) =>
-        review.id === updatedReview.id ? updatedReview : review
-    )
-    setReviews(updatedReviews)
-  }
 
   //GET games from local database
   const [localGames, setLocalGames] = useState([])
@@ -80,7 +55,40 @@ function App() {
     fetch('/games')
     .then(res => res.json())
     .then(setLocalGames)
-  }, [change])
+  }, [])
+
+
+  // GET all reviews
+  useEffect(() => {
+    fetch('/reviews')
+    .then(res => res.json())
+    .then(setReviews)
+  }, [])
+
+  //Add new Review to database
+  const handleReviews = (newReview, game_id) => {
+    const copyOfGames = [...localGames]
+    copyOfGames[(game_id-1)].reviews = [...copyOfGames[(game_id-1)].reviews, newReview]
+    setLocalGames(copyOfGames)
+  }
+
+
+  const handleDelete = (reviewToDelete, game_id) => {
+    const copyOfGames = [...localGames]
+    const updateReview = copyOfGames[(game_id-1)]?.reviews?.filter(review => review.id !== reviewToDelete.id)
+    // copyOfGames[(game_id-1)].reviews = [...copyOfGames[(game_id-1)].reviews, updateReview]
+    console.log(copyOfGames)
+    // setLocalGames(copyOfGames)
+  }
+
+
+  const handlePatch = (updatedReview) => {
+    const updatedReviews = reviews.map((review) =>
+        review.id === updatedReview.id ? updatedReview : review
+    )
+    setReviews(updatedReviews)
+  }
+
 
   // Filter games for search
   const [search, setSearch] = useState('')
@@ -169,6 +177,7 @@ const sortedLocalGames = () => {
         <Route path='/reviewed_games'>
           <ReviewedGames 
           handleFilterGenre={handleFilterGenre} 
+          handleReviews={handleReviews}
           setSearch={setSearch} 
           localGames={sortedLocalGames()} 
           reviews ={reviews} 

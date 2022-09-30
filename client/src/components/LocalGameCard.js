@@ -14,9 +14,9 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
         fetch(`/reviews/${id}`, {
             method: "DELETE",
         })
+        .then(res => res.json())
         .then(review => {
-            handleDelete(review)
-            setChange(!change)
+            handleDelete(review, review.game.id)
         });
     }
 
@@ -62,9 +62,8 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(reviews => {
-            handleReviews(reviews)
-            setChange(!change)
+        .then(review => {
+            handleReviews(review, review.game.id)
         })
         e.target.reset()
     }

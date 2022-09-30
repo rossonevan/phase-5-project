@@ -32,8 +32,7 @@ function GameCard({game, currentUser, handleReviews, change, setChange}) {
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
         .then(review => {
-            handleReviews(review)
-            setChange(!change)
+            handleReviews(review, review.game.id)
         })
         history.push('/reviewed_games')
     }
