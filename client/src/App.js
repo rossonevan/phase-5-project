@@ -88,6 +88,64 @@ function App() {
 
   const filteredLocalGames = localGames.filter(localGame => localGame.title.toLowerCase().includes(search.toLowerCase()))
 
+  //Dropdown menu to search by genre
+  const [filterGenre, setFilterGenre] = useState(false)
+
+  const handleFilterGenre = (filterGenre) => {
+    setFilterGenre(filterGenre)
+  }
+
+const sortedGameData = () => {
+    if (filterGenre === "shooter") {
+        return filteredGameData.filter( game => game.genre.includes('Shooter')
+    )} else if (filterGenre === "mmorpg") {
+        return filteredGameData.filter( game => game.genre.includes('MMORPG')
+    )} else if (filterGenre === "fighting") {
+        return filteredGameData.filter( game => game.genre.includes('Fighting')
+    )} else if (filterGenre === "moba") {
+        return filteredGameData.filter( game => game.genre.includes('MOBA')
+    )} else if (filterGenre === "sports") {
+        return filteredGameData.filter( game => game.genre.includes('Sports')
+    )} else if (filterGenre === "battle_royale") {
+        return filteredGameData.filter( game => game.genre.includes('Battle Royale')
+    )} else if (filterGenre === "card_game") {
+        return filteredGameData.filter( game => game.genre.includes('Card Game')
+    )} else if (filterGenre === "mmofps") {
+        return filteredGameData.filter( game => game.genre.includes('MMOFPS')
+    )} else if (filterGenre === "arpg") {
+        return filteredGameData.filter( game => game.genre.includes('ARPG')
+    )} else if (filterGenre === "strategy") {
+        return filteredGameData.filter( game => game.genre.includes('Strategy')
+    )} else
+        return filteredGameData
+}
+  
+const sortedLocalGames = () => {
+  if (filterGenre === "shooter") {
+      return filteredLocalGames.filter( game => game.genre.includes('Shooter')
+  )} else if (filterGenre === "mmorpg") {
+      return filteredLocalGames.filter( game => game.genre.includes('MMORPG')
+  )} else if (filterGenre === "fighting") {
+      return filteredLocalGames.filter( game => game.genre.includes('Fighting')
+  )} else if (filterGenre === "moba") {
+      return filteredLocalGames.filter( game => game.genre.includes('MOBA')
+  )} else if (filterGenre === "sports") {
+      return filteredLocalGames.filter( game => game.genre.includes('Sports')
+  )} else if (filterGenre === "battle_royale") {
+      return filteredLocalGames.filter( game => game.genre.includes('Battle Royale')
+  )} else if (filterGenre === "card_game") {
+      return filteredLocalGames.filter( game => game.genre.includes('Card Game')
+  )} else if (filterGenre === "mmofps") {
+      return filteredLocalGames.filter( game => game.genre.includes('MMOFPS')
+  )} else if (filterGenre === "arpg") {
+      return filteredLocalGames.filter( game => game.genre.includes('ARPG')
+  )} else if (filterGenre === "strategy") {
+      return filteredLocalGames.filter( game => game.genre.includes('Strategy')
+  )} else
+      return filteredLocalGames
+} 
+  
+  
   if(errors) return <h1>{errors}</h1>
 
   return (
@@ -98,10 +156,10 @@ function App() {
       </header>
       <Switch>
         <Route exact path='/'>
-          <GameList setSearch={setSearch} games={filteredGameData} currentUser={currentUser} handleReviews={handleReviews} change={change} setChange={setChange}/>
+          <GameList handleFilterGenre={handleFilterGenre} setSearch={setSearch} games={sortedGameData()} currentUser={currentUser} handleReviews={handleReviews} change={change} setChange={setChange}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames setSearch={setSearch} localGames={filteredLocalGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} change={change} setChange={setChange}/>
+          <ReviewedGames handleFilterGenre={handleFilterGenre} setSearch={setSearch} localGames={sortedLocalGames()} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} change={change} setChange={setChange}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />
