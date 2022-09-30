@@ -2,7 +2,11 @@ import GameCard from "./GameCard"
 import {useEffect, useState} from 'react';
 
 
-function GameList({games, currentUser, handleReviews, setLocalGames, change, setChange}) {
+function GameList({games, currentUser, handleReviews, setLocalGames, change, setChange, setSearch}) {
+    
+    const onSearch = e=> {
+        setSearch(e.target.value)
+    }
     
     const gamesLimit = games.slice(0,51)
 
@@ -19,8 +23,13 @@ function GameList({games, currentUser, handleReviews, setLocalGames, change, set
     })
             
     return (
-        <div className=" p- rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
-            {gameComponents}
+        <div>
+            <form>
+                <input onChange={onSearch} type='text' placeholder="Search by title..." />
+            </form>
+            <div className=" p- rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
+                {gameComponents}
+            </div>
         </div>
     )
 }

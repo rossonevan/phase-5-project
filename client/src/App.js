@@ -45,7 +45,7 @@ function App() {
               res.json().then(data => setErrors(data.error))
           }
       })
-  }, [])
+  }, [change])
 
   // GET all reviews
   useEffect(() => {
@@ -81,7 +81,12 @@ function App() {
     .then(res => res.json())
     .then(setLocalGames)
   }, [change])
- 
+
+  // Filter games for search
+  const [search, setSearch] = useState('')
+  const filteredGameData = gameData.filter(game => game.title.toLowerCase().includes(search.toLowerCase()))
+
+  const filteredLocalGames = localGames.filter(localGame => localGame.title.toLowerCase().includes(search.toLowerCase()))
 
   if(errors) return <h1>{errors}</h1>
 
@@ -89,14 +94,14 @@ function App() {
     <div className="bg-gradient-to-b from-red-500 to-black bg-scroll bg-contain 
     overflow-auto m-auto h-screen w-screen">
       <header className='bg-gradient-to-br from-black to-gray-700'>
-        <Navigation currentUser={currentUser} updateUser={updateUser}/>
+        <Navigation currentUser={currentUser} updateUser={updateUser} setSearch={setSearch}/>
       </header>
       <Switch>
         <Route exact path='/'>
-          <GameList games={gameData} currentUser={currentUser} handleReviews={handleReviews} change={change} setChange={setChange}/>
+          <GameList setSearch={setSearch} games={filteredGameData} currentUser={currentUser} handleReviews={handleReviews} change={change} setChange={setChange}/>
         </Route>
         <Route path='/reviewed_games'>
-          <ReviewedGames localGames={localGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} change={change} setChange={setChange}/>
+          <ReviewedGames setSearch={setSearch} localGames={filteredLocalGames} reviews ={reviews} currentUser={currentUser} handleReviews={handleReviews} handleDelete={handleDelete} handlePatch={handlePatch} change={change} setChange={setChange}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />
