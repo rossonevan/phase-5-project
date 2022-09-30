@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 
 
 
-function GameCard({game, currentUser, handleReviews, change, setChange}) {
+function GameCard({game, currentUser, handleReviews}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})

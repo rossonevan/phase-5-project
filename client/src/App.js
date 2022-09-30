@@ -11,7 +11,7 @@ import ReviewedGames from './components/ReviewedGames';
 
 function App() {
 
-  const [change, setChange] = useState(false)
+  // const [change, setChange] = useState(false)
 
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
@@ -75,18 +75,16 @@ function App() {
 
   const handleDelete = (reviewToDelete, game_id) => {
     const copyOfGames = [...localGames]
-    const updateReview = copyOfGames[(game_id-1)]?.reviews?.filter(review => review.id !== reviewToDelete.id)
-    // copyOfGames[(game_id-1)].reviews = [...copyOfGames[(game_id-1)].reviews, updateReview]
-    console.log(copyOfGames)
-    // setLocalGames(copyOfGames)
+    copyOfGames[(game_id-1)].reviews = copyOfGames[(game_id-1)]?.reviews?.filter(review => review.id !== reviewToDelete.id)
+    setLocalGames(copyOfGames)
   }
 
 
-  const handlePatch = (updatedReview) => {
-    const updatedReviews = reviews.map((review) =>
-        review.id === updatedReview.id ? updatedReview : review
-    )
-    setReviews(updatedReviews)
+  const handlePatch = (updatedReview, game_id) => {
+    const copyOfGames = [...localGames]
+    copyOfGames[(game_id-1)].reviews = copyOfGames[(game_id-1)].reviews?.map((review) =>
+    review.id === updatedReview.id ? updatedReview : review)
+    setLocalGames(copyOfGames)
   }
 
 
@@ -170,9 +168,7 @@ const sortedLocalGames = () => {
           handleFilterGenre={handleFilterGenre} 
           setSearch={setSearch} 
           games={sortedGameData()} 
-          currentUser={currentUser}  
-          change={change} 
-          setChange={setChange}/>
+          currentUser={currentUser}/>
         </Route>
         <Route path='/reviewed_games'>
           <ReviewedGames 
@@ -183,9 +179,7 @@ const sortedLocalGames = () => {
           reviews ={reviews} 
           currentUser={currentUser} 
           handleDelete={handleDelete} 
-          handlePatch={handlePatch} 
-          change={change} 
-          setChange={setChange}/>
+          handlePatch={handlePatch}/>
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />

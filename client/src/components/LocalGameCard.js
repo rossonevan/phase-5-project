@@ -3,7 +3,7 @@ import EditForm from './EditForm';
 
 
 
-function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch, change, setChange}) {
+function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, handlePatch}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -35,7 +35,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
                 <p className='m-2 p-2 break-words'>{review.comment}</p>
                 {currentUser.id === review.user.id ?
                 (<div className='flow-root m-2'>
-                    <EditForm handlePatch={handlePatch} review={review} change={change} setChange={setChange}/>
+                    <EditForm handlePatch={handlePatch} review={review} />
                     <button onClick={() => handleRemove(review.id)} className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full float-right">X</button>
                 </div>) 
                     : null}
