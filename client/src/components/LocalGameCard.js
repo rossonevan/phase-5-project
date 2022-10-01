@@ -23,7 +23,7 @@ function LocalGameCard({ localGame, currentUser, handleReviews, handleDelete, ha
     const toggleReviews = () => {
         setShowReviews(showReviews => !showReviews)
     }
-
+    
     // List of Reviews
     const reviewList = localGame.reviews?.map( review => {
         return (

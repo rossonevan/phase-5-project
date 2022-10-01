@@ -37,6 +37,18 @@ class ReviewsController < ApplicationController
         render json: copy, status: :ok
     end
 
+    # Must respond to game
+    def first_review
+        user = current_user
+        game = Game.find_or_create_by(game_params)
+        
+        review = Review.new(review_params)
+        review.user_id = user.id
+        review.game_id = game.id
+        review.save
+        render json: game, status: :created, include: ['reviews', 'reviews.user']
+    end
+
     private
 
     def find_review

@@ -11,8 +11,6 @@ import ReviewedGames from './components/ReviewedGames';
 
 function App() {
 
-  // const [change, setChange] = useState(false)
-
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
   const [reviews, setReviews] = useState([])
@@ -65,27 +63,49 @@ function App() {
     .then(setReviews)
   }, [])
 
+  // Adding a review to a new Game
+  const handleFirstReview = (newGame) => {
+    setLocalGames(games => [...games, newGame])
+  }
+  
   //Add new Review to database
   const handleReviews = (newReview, game_id) => {
     const copyOfGames = [...localGames]
-    copyOfGames[(game_id-1)].reviews = [...copyOfGames[(game_id-1)].reviews, newReview]
+    const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
+    copyOfGames[game_index].reviews = [...copyOfGames[game_index].reviews, newReview]
     setLocalGames(copyOfGames)
   }
+
+  // const handleReviews = (newReview) => {
+  //     setReviews(reviews =>[...reviews, newReview])
+  // }
 
 
   const handleDelete = (reviewToDelete, game_id) => {
     const copyOfGames = [...localGames]
-    copyOfGames[(game_id-1)].reviews = copyOfGames[(game_id-1)]?.reviews?.filter(review => review.id !== reviewToDelete.id)
+    const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
+    copyOfGames[game_index].reviews = copyOfGames[game_index].reviews?.filter(review => review.id !== reviewToDelete.id)
     setLocalGames(copyOfGames)
   }
 
+  // const handleDelete = (reviewToDelete) => {
+  //   const updatedReviews = reviews.filter((review) => review.id !== reviewToDelete.id)
+  //     setReviews(updatedReviews)
+  // }
 
   const handlePatch = (updatedReview, game_id) => {
     const copyOfGames = [...localGames]
-    copyOfGames[(game_id-1)].reviews = copyOfGames[(game_id-1)].reviews?.map((review) =>
+    const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
+    copyOfGames[game_index].reviews = copyOfGames[game_index].reviews?.map((review) =>
     review.id === updatedReview.id ? updatedReview : review)
     setLocalGames(copyOfGames)
   }
+
+  // const handlePatch = (updatedReview) => {
+  //   const updatedReviews = reviews.map((review) => 
+  //   review.id === updatedReview.id ? updatedReview : review)
+  //   setReviews(updatedReviews)
+  // }
 
 
   // Filter games for search
@@ -163,7 +183,7 @@ const sortedLocalGames = () => {
       <Switch>
         <Route exact path='/'>
           <GameList 
-          handleReviews={handleReviews}
+          handleFirstReview={handleFirstReview}
           reviews={reviews} 
           handleFilterGenre={handleFilterGenre} 
           setSearch={setSearch} 

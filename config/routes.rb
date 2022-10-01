@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/all_games", to: 'games#from_api'
   # get "/game/:id", to: 'games#show'
 
+  post 'first_review', to: 'reviews#first_review'
+
   post '/signup', to: 'users#create'
   get '/me', to: "users#show"
 

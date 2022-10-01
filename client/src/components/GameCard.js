@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 
 
 
-function GameCard({game, currentUser, handleReviews}) {
+function GameCard({game, currentUser, handleFirstReview}) {
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({})
@@ -24,17 +24,18 @@ function GameCard({game, currentUser, handleReviews}) {
         }
 
         // POST a review
-        fetch('/reviews', {
+        fetch('/first_review', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(infoToSend)
         }).then(res => res.json())
-        .then(review => {
-            handleReviews(review, review.game.id)
+        .then(game => {
+            handleFirstReview(game)
+            console.log(game)
+            history.push('/reviewed_games')
         })
-        history.push('/reviewed_games')
     }
 
         // Toggle Add Review Form
