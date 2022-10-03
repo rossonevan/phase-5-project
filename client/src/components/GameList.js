@@ -2,7 +2,7 @@ import GameCard from "./GameCard"
 import {useEffect, useState} from 'react';
 
 
-function GameList({reviews, games, currentUser, handleFirstReview, setLocalGames, setSearch, handleFilterGenre}) {
+function GameList({reviews, games, currentUser, handleReviews, handleFirstReview, setLocalGames, setSearch, handleFilterGenre}) {
     
     const onSearch = (e) => {
         setSearch(e.target.value)
@@ -20,6 +20,7 @@ function GameList({reviews, games, currentUser, handleFirstReview, setLocalGames
         reviews={reviews}
         currentUser={currentUser}
         handleFirstReview={handleFirstReview}
+        handleReviews={handleReviews}
         setLocalGames={setLocalGames}
         key={game.id}
         />

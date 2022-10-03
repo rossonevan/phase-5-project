@@ -64,8 +64,8 @@ function App() {
   }, [])
 
   // Adding a review to a new Game
-  const handleFirstReview = (newGame) => {
-    setLocalGames(games => [...games, newGame])
+  const handleFirstReview = (newGame, title) => {
+    setLocalGames([...localGames.filter(game => game.title !== title), newGame])
   }
   
   //Add new Review to database
@@ -76,22 +76,12 @@ function App() {
     setLocalGames(copyOfGames)
   }
 
-  // const handleReviews = (newReview) => {
-  //     setReviews(reviews =>[...reviews, newReview])
-  // }
-
-
   const handleDelete = (reviewToDelete, game_id) => {
     const copyOfGames = [...localGames]
     const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
     copyOfGames[game_index].reviews = copyOfGames[game_index].reviews?.filter(review => review.id !== reviewToDelete.id)
     setLocalGames(copyOfGames)
   }
-
-  // const handleDelete = (reviewToDelete) => {
-  //   const updatedReviews = reviews.filter((review) => review.id !== reviewToDelete.id)
-  //     setReviews(updatedReviews)
-  // }
 
   const handlePatch = (updatedReview, game_id) => {
     const copyOfGames = [...localGames]
@@ -100,13 +90,6 @@ function App() {
     review.id === updatedReview.id ? updatedReview : review)
     setLocalGames(copyOfGames)
   }
-
-  // const handlePatch = (updatedReview) => {
-  //   const updatedReviews = reviews.map((review) => 
-  //   review.id === updatedReview.id ? updatedReview : review)
-  //   setReviews(updatedReviews)
-  // }
-
 
   // Filter games for search
   const [search, setSearch] = useState('')
@@ -183,6 +166,7 @@ const sortedLocalGames = () => {
       <Switch>
         <Route exact path='/'>
           <GameList 
+          handleReviews={handleReviews}
           handleFirstReview={handleFirstReview}
           reviews={reviews} 
           handleFilterGenre={handleFilterGenre} 
