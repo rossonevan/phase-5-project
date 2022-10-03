@@ -84,7 +84,7 @@ function GameCard({game, currentUser, handleFirstReview, handleReviews}) {
 
         <div className=" bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-20 rounded-xl w-1/4 text-white">
             <h1 className="text-center text-lg font-bold h-10">{game.title}</h1>
-                <img src={game.thumbnail} alt={game.title} onClick={() => setShowDescription(!showDescription)} className='w-full cursor-pointer hover:opacity-70'/>
+                <img src={game.thumbnail} alt={game.title} onClick={() => setShowDescription(!showDescription)} className='w-full cursor-pointer hover:opacity-50 hover:scale-95 ease-in-out duration-150'/>
             <div className='flow-root'>
                 <h3 className='h-8 pt-2 float-left'><strong>Genre:</strong> {game.genre}</h3>
                 <h3 className='h-8 pt-2 float-right'><strong>Platform:</strong> {game.platform}</h3> 

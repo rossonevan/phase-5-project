@@ -51,7 +51,10 @@ function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handl
                     </select>
                 </div>
             </div>
-            <h1 className='text-center text-6xl text-white underline italic' > Reviewed Games</h1>
+            {/* <h1 className='text-center text-6xl text-white underline italic' > Reviewed Games</h1> */}
+            <div className="bg-black justify-center">
+                <img src="https://fontmeme.com/permalink/221003/6eed6efe089e0312f20216ec8d8deac2.png" alt="cobra-kai-font" className="pl-96 pr-96 h-50 mx-auto" />
+            </div>
             <div className="rounded-lg shadow-sm shadow-indigo-100 flex flex-wrap">
                 {localGameComponents}
             </div>
