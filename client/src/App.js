@@ -4,7 +4,7 @@ import GameList from './components/GameList';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Navigation from './components/Navigation';
-import UserPage from './components/UserPage';
+import UserContainer from './components/UserContainer';
 import { useState, useEffect } from 'react';
 import ReviewedGames from './components/ReviewedGames';
 
@@ -61,7 +61,7 @@ function App() {
     fetch('/reviews')
     .then(res => res.json())
     .then(setReviews)
-  }, [currentUser])
+  }, [])
 
   // Adding a review to a new Game
   const handleFirstReview = (newGame, title) => {
@@ -188,7 +188,7 @@ const sortedLocalGames = () => {
           />
         </Route>
         <Route path="/me">
-          <UserPage currentUser={currentUser} />
+          <UserContainer currentUser={currentUser} localGames={localGames}/>
         </Route>
         <Route path='/signup'>
           <Signup updateUser={updateUser} />

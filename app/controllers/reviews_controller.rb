@@ -4,8 +4,8 @@ class ReviewsController < ApplicationController
 
 
     def index
-        reviews = Review.all
-        render json: reviews, status: :ok
+        # reviews = Review.all
+        render json: current_user.reviews, status: :ok
     end 
 
     def show
