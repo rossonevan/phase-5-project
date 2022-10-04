@@ -61,7 +61,7 @@ function App() {
     fetch('/reviews')
     .then(res => res.json())
     .then(setReviews)
-  }, [])
+  }, [currentUser])
 
   // Adding a review to a new Game
   const handleFirstReview = (newGame, title) => {
@@ -172,7 +172,8 @@ const sortedLocalGames = () => {
           handleFilterGenre={handleFilterGenre} 
           setSearch={setSearch} 
           games={sortedGameData()} 
-          currentUser={currentUser}/>
+          currentUser={currentUser}
+          />
         </Route>
         <Route path='/reviewed_games'>
           <ReviewedGames 
@@ -183,7 +184,8 @@ const sortedLocalGames = () => {
           reviews ={reviews} 
           currentUser={currentUser} 
           handleDelete={handleDelete} 
-          handlePatch={handlePatch}/>
+          handlePatch={handlePatch}
+          />
         </Route>
         <Route path="/me">
           <UserPage currentUser={currentUser} />

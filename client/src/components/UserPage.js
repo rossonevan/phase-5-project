@@ -25,7 +25,7 @@ function UserPage({currentUser}) {
             <div className="flex flex-wrap">
             {currentUser.reviews?.map(review => {
                 return (
-                    <div className=" items-start bg-white border w-64 m-4">
+                    <div className=" items-start bg-white border rounded-md w-64 m-4">
                         <div className="sm:ml-8">  
                             <h1 className="mt-4 text-lg text-black font-medium sm:text-2xl underline ">Review {i++}</h1>                          
                             <h1 className="mt-2 text-lg text-black sm:text-lg">Game: {review.game?.title}</h1>
