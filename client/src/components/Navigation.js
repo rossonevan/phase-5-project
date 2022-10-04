@@ -24,7 +24,7 @@ function Navigation({currentUser, updateUser}) {
                         <NavLink to='/reviewed_games' activeClassName='bg-red-900' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3 ">Reviewed Games</NavLink>
                         {currentUser ?
                             <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
-                                <h3 className='text-white'>Welcome, {currentUser.username}</h3>
+                                <h3 className='text-white'>Welcome, {currentUser.username}!</h3>
                                 <NavLink activeClassName='bg-red-900' className="inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3" exact to='/me'>My Reviews</NavLink>
                                 <button onClick={handleLogout} className='inline-block hover:border-gray-200 rounded text-white hover:text-black hover:bg-red-600 py-1 px-3'>Log Out</button>
                             </div> 
