@@ -3,7 +3,7 @@ import LocalGameCard from "./LocalGameCard";
 
 
 function ReviewedGames ({ localGames, reviews, currentUser, handleReviews, handleDelete, handlePatch, setSearch, handleFilterGenre}) {
-
+    
     const onSearch = e=> {
         setSearch(e.target.value)
     }

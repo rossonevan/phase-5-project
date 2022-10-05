@@ -73,7 +73,7 @@ function App() {
     const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
     copyOfGames[game_index].reviews = [...copyOfGames[game_index].reviews, newReview]
     setLocalGames(copyOfGames)
-    console.log(localGames)
+    // console.log(localGames)
   }
 
   const handleDelete = (reviewToDelete, game_id) => {
@@ -81,6 +81,7 @@ function App() {
     const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
     copyOfGames[game_index].reviews = copyOfGames[game_index].reviews?.filter(review => review.id !== reviewToDelete.id)
     setLocalGames(copyOfGames)
+    console.log(localGames)
   }
 
   const handlePatch = (updatedReview, game_id) => {
@@ -166,7 +167,6 @@ const sortedLocalGames = () => {
       <Switch>
         <Route exact path='/'>
           <GameList 
-          handleReviews={handleReviews}
           handleFirstReview={handleFirstReview}
           reviews={reviews} 
           handleFilterGenre={handleFilterGenre} 
@@ -179,7 +179,7 @@ const sortedLocalGames = () => {
           <ReviewedGames 
           handleFilterGenre={handleFilterGenre} 
           handleReviews={handleReviews}
-          setSearch={setSearch} 
+          setSearch={setSearch}
           localGames={sortedLocalGames()} 
           reviews ={reviews} 
           currentUser={currentUser} 
