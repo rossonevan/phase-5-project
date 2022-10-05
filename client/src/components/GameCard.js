@@ -1,8 +1,6 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-
-
 function GameCard({game, currentUser, handleFirstReview, handleReviews}) {
 
     const [showForm, setShowForm] = useState(false)
@@ -70,13 +68,13 @@ function GameCard({game, currentUser, handleFirstReview, handleReviews}) {
     )}
 
         // Add Review Button
-        const showAddReviewButton = () => {
-            return (
-                <>
-                {showForm ? (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Cancel</button>) : (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Add A Review</button>)}
-                </>
-            )
-        }
+    const showAddReviewButton = () => {
+        return (
+            <>
+            {showForm ? (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Cancel</button>) : (<button onClick={() => setShowForm(!showForm)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Add A Review</button>)}
+            </>
+        )
+    }
       
 
     return (

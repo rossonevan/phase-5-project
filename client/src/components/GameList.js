@@ -1,6 +1,4 @@
 import GameCard from "./GameCard"
-import {useEffect, useState} from 'react';
-
 
 function GameList({reviews, games, currentUser, handleReviews, handleFirstReview, setLocalGames, setSearch, handleFilterGenre}) {
     

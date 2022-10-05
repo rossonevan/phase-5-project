@@ -48,7 +48,6 @@ function App() {
   //GET games from local database
   const [localGames, setLocalGames] = useState([])
 
-  
   useEffect(() => {
     fetch('/games')
     .then(res => res.json())
@@ -153,7 +152,6 @@ const sortedLocalGames = () => {
   )} else
       return filteredLocalGames
 } 
-  
   
   if(errors) return <h1>{errors}</h1>
 

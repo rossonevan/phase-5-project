@@ -11,12 +11,12 @@ class GamesController < ApplicationController
 
     def index
         games = Game.all
-        render json: games, status: :ok, include: ['reviews', 'reviews.user']
+        render json: games, status: :ok, include: ['reviews', 'reviews.user', 'reviews.game']
     end
 
     def show
         game = find_game
-        render json: game, status: :ok, include: ['reviews', 'reviews.user']
+        render json: game, status: :ok, include: ['reviews', 'reviews.user', 'reviews.game']
     end
 
     private

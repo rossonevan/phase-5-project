@@ -25,10 +25,14 @@ function UserContainer ({currentUser, localGames}) {
         />
     })
 
-
     return (
-        <div>
-            {gameReviews}
+        <div >
+            <article className="p-6 bg-gradient-to-br from-black to-gray-700 sm:p-4 sm:m-10 rounded-xl">
+                <h1 className="text-3xl border-b border-gray-400 text-white">Reviews</h1>
+                <div className="flex flex-wrap">
+                {gameReviews}
+                </div>
+            </article>
         </div>
     )
 }

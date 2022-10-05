@@ -51,21 +51,21 @@ function Login({updateUser}) {
                 <form onSubmit={onSubmit} className="p-8 mt-6 mb-0 rounded-lg shadow-2xl space-y-4 bg-gradient-to-br from-black to-gray-700">
                     <p className="text-lg font-medium text-center text-white">Please sign into your account.</p>
 
-                    <div>
+                    <div className="relative">
                         <label htmlFor="username" className="text-sm font-medium text-white">Username</label>
                         <div className="relative mt-1">
                             <input type='text' name='username' placeholder='Enter Username' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm" />
                         </div>
                     </div>
 
-                    <div>
+                    <div className="relative">
                         <label htmlFor="email" className="text-sm font-medium text-white">Email</label>
                         <div className="relative mt-1">
                             <input type='text' name='email' placeholder='Enter Email' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm"/>
                         </div>
                     </div>
 
-                    <div>
+                    <div className="relative">
                         <label htmlFor="password" className="text-sm font-medium text-white">Password</label>
                         <div className="relative mt-1">
                             <input type='password' name='password' placeholder='Enter Password' required onChange={handleChange} className="w-full p-4 pr-12 text-sm border-red-600 border-4 rounded-lg shadow-sm"/>

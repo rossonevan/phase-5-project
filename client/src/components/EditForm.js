@@ -10,7 +10,6 @@ function EditForm ({ handlePatch, review}) {
         setEditForm(editForm => !editForm)
     }
 
-
     const handleEditForm = (e) => {
         e.preventDefault()
         fetch(`/reviews/${review.id}`,
@@ -52,7 +51,6 @@ function EditForm ({ handlePatch, review}) {
             <input className='rounded pl-1 m-2 w-20 bg-gray-300 border transition ease-in-out focus:bg-gray-200 focus:border-red-600 focus:outline-none' onChange={(e) => setRating(e.target.value)} name="rating" type="number" min="0" max="5" step="1" placeholder="Rating" required />
             <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-normal text-sm py-1 px-2 rounded-full">Edit</button>
         </form>
-
 
     return (
         <div>
