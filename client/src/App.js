@@ -73,6 +73,7 @@ function App() {
     const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
     copyOfGames[game_index].reviews = [...copyOfGames[game_index].reviews, newReview]
     setLocalGames(copyOfGames)
+    console.log(localGames)
   }
 
   const handleDelete = (reviewToDelete, game_id) => {
@@ -92,6 +93,7 @@ function App() {
 
   // Filter games for search
   const [search, setSearch] = useState('')
+
   const filteredGameData = gameData.filter(game => game.title.toLowerCase().includes(search.toLowerCase()))
 
   const filteredLocalGames = localGames.filter(localGame => localGame.title.toLowerCase().includes(search.toLowerCase()))
@@ -159,7 +161,7 @@ const sortedLocalGames = () => {
     <div className="bg-gradient-to-b from-red-500 to-black bg-scroll bg-contain 
     overflow-auto m-auto h-screen w-screen">
       <header className='bg-gradient-to-br from-black to-gray-700'>
-        <Navigation currentUser={currentUser} updateUser={updateUser} setSearch={setSearch}/>
+        <Navigation currentUser={currentUser} updateUser={updateUser}/>
       </header>
       <Switch>
         <Route exact path='/'>
