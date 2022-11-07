@@ -13,9 +13,11 @@ function App() {
 
   // State of currently logged in user
   const [currentUser, setCurrentUser] = useState('');
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
 
-  const updateUser = (user) => setCurrentUser(user)
+  const updateUser = (user) => setCurrentUser(user);
+
+ 
 
   // GET all games from API
   const [gameData, setGameData] = useState([]);
@@ -73,7 +75,6 @@ function App() {
     const game_index = copyOfGames.findIndex((gameObj) => gameObj.id === game_id)
     copyOfGames[game_index].reviews = [...copyOfGames[game_index].reviews, newReview]
     setLocalGames(copyOfGames)
-    // console.log(localGames)
   }
 
   const handleDelete = (reviewToDelete, game_id) => {
@@ -154,6 +155,14 @@ const sortedLocalGames = () => {
   )} else
       return filteredLocalGames
 } 
+
+ // Pagination
+//  const [currentPage, setCurrentPage] = useState(1);
+//  const [gamesPerPage, setGamesPerPage] = useState(10);
+
+//  const lastGameIndex = currentPage * gamesPerPage;
+//  const firstGameIndex = lastGameIndex - gamesPerPage;
+//  const currentGames = gameData.slice(firstGameIndex, lastGameIndex)
   
   if(errors) return <h1>{errors}</h1>
 

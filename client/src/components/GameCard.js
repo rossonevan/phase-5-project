@@ -59,7 +59,7 @@ function GameCard({game, currentUser, handleFirstReview}) {
                     ease-in-out
                     m-0
                     focus:text-gray-700 focus:bg-gray-300 focus:border-red-600 focus:outline-none' type='text' onChange={userInput} name='comment' placeholder='Write your review...' required />
-                <input className='rounded pl-1 m-2 w-20 border transition ease-in-out focus:bg-gray-300 focus:border-red-600 focus:outline-none' type='number' onChange={userInput} name='rating' placeholder='Rating' required/>
+                <input className='rounded pl-1 m-2 w-20 border transition ease-in-out focus:bg-gray-300 focus:border-red-600 focus:outline-none' type='number' min='0' max='5' onChange={userInput} name='rating' placeholder='Rating' required/>
                 <input className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full m-2" type='submit' />
             </form>
         :
